@@ -1,4 +1,4 @@
-#include "clases.h"
+#include "Лаб02"
 
 int main() {
 
