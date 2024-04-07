@@ -26,64 +26,64 @@ class line: public point {
 class kvad: public point {
     public:
     void izobr(){
-        cout<<"Квадрат нарисованна"<<endl;
+        cout<<"Квадрат нарисованн"<<endl;
     }
     void ubr(){
-        cout<<"Квадрат удалена"<<endl;
+        cout<<"Квадрат удален"<<endl;
     }
     void peredvin(){
-        cout<<"Квадрат передвинута"<<endl;
+        cout<<"Квадрат передвинут"<<endl;
     }
     void pover(){
-        cout<<"Квадрат повернута"<<endl;
+        cout<<"Квадрат повернут"<<endl;
     }
 };
 
 class romb: public point {
     public:
     void izobr(){
-        cout<<" нарисованна"<<endl;
+        cout<<"Ромб нарисованн"<<endl;
     }
     void ubr(){
-        cout<<"К удалена"<<endl;
+        cout<<"Ромб удален"<<endl;
     }
     void peredvin(){
-        cout<<"т передвинута"<<endl;
+        cout<<"Ромб передвинут"<<endl;
     }
     void pover(){
-        cout<<" повернута"<<endl;
+        cout<<"Ромб повернут"<<endl;
     }
 };
 
 class prim: public point {
     public:
     void izobr(){
-        cout<<" нарисованна"<<endl;
+        cout<<" прямоугольник нарисованн"<<endl;
     }
     void ubr(){
-        cout<<"К удалена"<<endl;
+        cout<<"прямоугольник удалена"<<endl;
     }
     void peredvin(){
-        cout<<"т передвинута"<<endl;
+        cout<<"прямоугольник передвинута"<<endl;
     }
     void pover(){
-        cout<<" повернута"<<endl;
+        cout<<"прямоугольник повернута"<<endl;
     }
 };
 
 class par: public virtual kvad{
     public:
     void izobr(){
-        cout<<"пар нарисованна"<<endl;
+        cout<<"параллелепипед нарисованн"<<endl;
     }
     void ubr(){
-        cout<<"пар удалена"<<endl;
+        cout<<"параллелепипед удален"<<endl;
     }
     void peredvin(){
-        cout<<"пар передвинута"<<endl;
+        cout<<"параллелепипед передвинут"<<endl;
     }
     void pover(){
-        cout<<"пар повернута"<<endl;
+        cout<<"параллелепипед повернут"<<endl;
     }
 };
 
