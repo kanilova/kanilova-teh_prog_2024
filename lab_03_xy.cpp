@@ -36,6 +36,10 @@ public:
         double dy = y - other.y;
         return sqrt(dx*dx + dy*dy);
     }
+    
+    void print_info() {
+        std::cout << "Point coordinates: (" << x << ", " << y << ")" << std::endl;
+    }
 };
 
 class Shape {
@@ -44,6 +48,7 @@ public:
     virtual void erase() = 0;
     virtual void move(double dx, double dy) = 0;
     virtual void rotate(double angle) = 0;
+    virtual void print_info() = 0;
 };
 
 class Line : public Shape {
@@ -73,11 +78,18 @@ public:
         end.rotate(angle);
         std::cout << "Rotating line..." << std::endl;
     }
+    
+    void print_info() override {
+        std::cout << "Line coordinates: " << std::endl;
+        start.print_info();
+        end.print_info();
+    }
 };
 
 class Quadrilateral : public Shape {
 public:
-    
+    virtual ~Quadrilateral() {}
+    virtual void print_info() = 0;
 };
 
 class Square : public Quadrilateral, public Point {
@@ -102,15 +114,19 @@ public:
     }
 
     void rotate(double angle) override {
-         
-    
-        double s = x + side - side * cos(angle * M_PI / 180)*
-         x - side * sin(angle * M_PI / 180);
-    
+        double new_x = x * cos(angle) - y * sin(angle);
+        double new_y = x * sin(angle) + y * cos(angle);
+        x = new_x;
+        y = new_y;
+        std::cout << "Rotating square..." << std::endl;
     }
-
-   
+    
+    void print_info() override {
+        std::cout << "Square coordinates: (" << x << ", " << y << ")" << std::endl;
+        std::cout << "Side length: " << side << std::endl;
+    }
 };
+
 class rhombus : public Quadrilateral, public Point {
 protected:
     double side;
@@ -133,14 +149,17 @@ public:
     }
 
     void rotate(double angle) override {
-         
-    
-        double s = x + side - side * cos(angle * M_PI / 180)*
-         x - side * sin(angle * M_PI / 180);
-    
+        double new_x = x * cos(angle) - y * sin(angle);
+        double new_y = x * sin(angle) + y * cos(angle);
+        x = new_x;
+        y = new_y;
+        std::cout << "Rotating rhombus..." << std::endl;
     }
-
-   
+    
+    void print_info() override {
+        std::cout << "Rhombus coordinates: (" << x << ", " << y << ")" << std::endl;
+        std::cout << "Side length: " << side << std::endl;
+    }
 };
 
 
@@ -166,12 +185,17 @@ public:
     }
 
     void rotate(double angle) override {
-        double s = x + side - side * cos(angle * M_PI / 180)*
-         x - side * sin(angle * M_PI / 180);
-        
+        double new_x = x * cos(angle) - y * sin(angle);
+        double new_y = x * sin(angle) + y * cos(angle);
+        x = new_x;
+        y = new_y;
+        std::cout << "Rotating rechandle..." << std::endl;
     }
-
     
+    void print_info() override {
+        std::cout << "Rechandle coordinates: (" << x << ", " << y << ")" << std::endl;
+        std::cout << "Side length: " << side << std::endl;
+    }
 };
 class  parallerodram : public Quadrilateral, public Point {
 protected:
@@ -197,54 +221,65 @@ public:
     }
 
     void rotate(double angle) override {
-    
-        double s = x + side - side * cos(angle * M_PI / 180)*
-         x - side * sin(angle * M_PI / 180);
-    
+        double new_x = x * cos(angle) - y * sin(angle);
+        double new_y = x * sin(angle) + y * cos(angle);
+        x = new_x;
+        y = new_y;
+        std::cout << "Rotating parallerodram..." << std::endl;
     }
-
     
+    void print_info() override {
+        std::cout << "Parallerodram coordinates: (" << x << ", " << y << ")" << std::endl;
+        std::cout << "Side length: " << side << std::endl;
+    }
 };
 
-
-// Пример использования классов
+// ?????? ????????????? ???????
 int main() {
     Point p1(0, 0);
     Point p2(3, 4);
 
     p1.draw();
     p2.draw();
-
+    std::cout << std::endl;
+    
     Line l(p1, p2);
     l.draw();
-    
+    std::cout << std::endl;
+  
     Square Squ(2,3,6);
     Squ.draw();
-    Squ.erase();
     Squ.move(2,4);
     Squ.rotate(30);
-    
+    Squ.print_info();
+    Squ.erase();
+    std::cout << std::endl;
+
     
     rhombus Romb(2,3,6);
     Romb.draw();
-    Romb.erase();
     Romb.move(2,4);
     Romb.rotate(30);
-    
+    Romb.print_info();
+    Romb.erase();
+    std::cout << std::endl;
+
     rechandle Prim(4,5,6);
     Prim.draw();
-    Prim.erase();
     Prim.move(3,4);
     Prim.rotate(60);
-    
+    Prim.print_info();
+    Prim.erase();
+    std::cout << std::endl;
+
     parallerodram Parll(4,5,6);
     Parll.draw();
-    Parll.erase();
     Parll.move(3,4);
     Parll.rotate(60);
-    
-    
+    Parll.print_info();
+    Parll.erase();
+    std::cout << std::endl;
 
-   
     return 0;
 }
+
