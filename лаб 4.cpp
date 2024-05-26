@@ -2,19 +2,20 @@
 using namespace std;
 #include <vector>
 #include <fstream>// для записи и чтения файла
-#include <string>
 #include<Windows.h>
+#include <cstdlib>
+#include <string>
 
 int main()
 {
-    setlocale(LC_ALL, "RUS");
+    setlocale(LC_ALL, "rus");
     vector <string>  cars;
-    ofstream mark("cars.txt",ios::app);
+    ofstream mark("cars.txt", ios::app);
     ifstream klass("cars.txt");
     int g;
-   
+
     string s;
-  
+
 
     for (;;) {
         while (getline(klass, s)) {
@@ -34,13 +35,20 @@ int main()
             cout << "введите команду:\n1-добавить значение\n2-удалить значение\n3-поменять значение\n4-найти\n5-вывести бд" << endl;
             cin >> a;
             if (a == 1) {
-                cout << endl;
-                string n;
-                cout << "введите знач" << endl;
+                string n, n1, n2, n3, n4;
+                cout << "введите марку автомобиля" << endl;
                 cin >> n;
-                mark << n << endl;
-                cars.push_back(n);
+                cout << "введите марку автомобиля" << endl;
+                cin >> n1;
+                cout << "введите марку автомобиля" << endl;
+                cin >> n2;
+                cout << "введите марку автомобиля" << endl;
+                cin >> n3;
+                cout << "введите марку автомобиля" << endl;
+                cin >> n4;
+                mark << n + " " + n1 + " " + n2 + " " + n3 + " " + n4 << endl;
 
+                cars.push_back(n+" "+ n1+" "+n2+" "+n3 + " "+n4);
             }
             else if (a == 2) {
                 ofstream mark2("cars.txt");
@@ -77,10 +85,12 @@ int main()
             }
             else if (a == 5) {
                 cout << endl;
+                cout << "1 2 3 4 5" << endl;
                 for (int i = 0;i < cars.size();i++) {
                     cout << cars[i] << endl;
                 }
             }
         }
     }
+    system("pause");
 }
